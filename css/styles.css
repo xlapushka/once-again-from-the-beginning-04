@@ -18,6 +18,7 @@ body {
   color: var(--medium-color);
   font-weight: 400;
   line-height: 1.36;
+  letter-spacing: 0.02em;
 }
 
 img {
@@ -107,7 +108,7 @@ p {
   font-weight: 600;
   font-size: 12px;
   line-height: calc(16.34 / 12);
-  letter-spacing: 10%;
+  letter-spacing: 0.1em;
   color: var(--light-color-first);
 }
 
@@ -131,14 +132,10 @@ p {
   margin-right: 43px;
 }
 
-.nav-accent:hover,
-.nav-accent:focus,
-.list.media:hover,
-.list.media:focus,
-.aside-media-item:hover,
-.aside-media-item:focus,
-.contacts li:hover,
-.contacts li:focus {
+.nav-accent:is(:hover, :focus),
+.list.media:is(:hover, :focus),
+.aside-media-item:is(:hover, :focus),
+.contacts li:is(:hover, :focus) {
   color: var(--accent-color);
 }
 /* зробити зміну кольору лого при наведенні */
@@ -158,7 +155,7 @@ p {
   font-family: inherit;
   font-weight: 600;
   font-size: 12px;
-  letter-spacing: 9%;
+  letter-spacing: 0.09em;
 
   text-transform: uppercase;
   text-align: center;
@@ -271,7 +268,6 @@ footer .list::before {
 .working-hours p {
   font-size: 18px;
   line-height: 1.66;
-  letter-spacing: 2%;
 }
 
 .about,
@@ -430,8 +426,8 @@ footer .list::before {
 .advantages .list {
   display: flex;
   flex-wrap: wrap;
-  /* width: 370px; */
-  padding-left: 100px;
+  width: 370px;
+  margin-left: 100px;
   margin-right: 130px;
 }
 
