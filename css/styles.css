@@ -647,10 +647,6 @@ footer .list::before {
   fill: currentColor;
 }
 
-.contacts svg:is(:hover, :focus) {
-  fill: var(--accent-color);
-}
-
 .contacts address {
   padding-bottom: 70px;
 }
