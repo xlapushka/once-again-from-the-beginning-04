@@ -78,15 +78,38 @@ p {
   flex-direction: column-reverse;
 }
 
+.current-active {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+}
+
+.current-active::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  /* bottom: -12px;  - алтернатива gap в батьку*/
+  width: 100%;
+  height: 4px;
+
+  border-radius: 2px;
+  background-color: var(--accent-color);
+}
 /* -------------------- HEADER ------------------- */
+
+header {
+  position: absolute;
+  padding-top: 32px;
+  /* padding-bottom: 92px; */
+  /* нижі паддінги не працюють, задала hero-content від самого верху */
+  width: 100%;
+}
 
 .nav {
   display: flex;
   align-items: center;
-  padding-top: 32px;
   padding-right: 20px;
-  padding-bottom: 98px;
-  background-color: lightblue;
 }
 
 .logo {
@@ -103,6 +126,8 @@ p {
 
 .logo svg:is(:hover, :focus) {
   fill: var(--accent-color);
+
+  transition: fill 250ms ease-in-out;
 }
 
 .nav-menu {
@@ -117,10 +142,9 @@ p {
 }
 
 .paddings-for-a {
-  display: block;
+  /* display: inline-block; */
   padding-top: 20px;
   padding-bottom: 20px;
-  outline: 1px solid grey
 }
 /* для збільшення області попадання при хувері */
 
@@ -143,6 +167,8 @@ p {
 .contacts li:is(:hover, :focus),
 footer .link:is(:hover, :focus) {
   color: var(--accent-color);
+
+  transition: color 250ms ease-in-out;
 }
 
 .btn {
@@ -155,8 +181,9 @@ footer .link:is(:hover, :focus) {
   border: 1px solid var(--accent-color);
   border-radius: 25px;
   background-color: inherit;
+  box-shadow: inherit 0px 7px 29px 0px;
 
-  color: var(--dark-color);
+  color: inherit;
   font-family: inherit;
   font-weight: 600;
   font-size: 12px;
@@ -164,11 +191,14 @@ footer .link:is(:hover, :focus) {
 
   text-transform: uppercase;
   text-align: center;
+  justify-content: center;
   cursor: pointer;
 }
 
 .btn:is(:hover, :focus) {
   background-color: var(--accent-color-hover);
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 6px 8px 0px;
+  transition: background-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
 }
 /* мʼяка заливка при hover потрібна */
 
@@ -176,32 +206,32 @@ footer .link:is(:hover, :focus) {
 
 .hero {
   display: flex;
+  width: 100%;
+  height: 680px;
   /* align-items: flex-start; */
 }
 
-/* не зроблено */
 .aside-menu {
-  display: flex;
-  flex-basis: 100px;
-  /* padding-left: 82px;
-  padding-top: 282px;
-  padding-bottom: 40px; */
-  background-color: indianred;
+  position: relative;
+  min-width: 100px;
 }
 
-/* .aside-media {
-  display: flex;
+.aside-media {
+  position: absolute;
+  bottom: 40px;
+  left: 27px;
+  transform-origin: top left;
   transform: rotate(-90deg);
-  padding-top: 82px;
-  padding-left: 40px;
+  /* можна робити через flex, тоді теж потрібна міняти місце повороту + translate */
+
+  display: flex;
+  align-items: center;
   gap: 40px;
   font-weight: 600;
   font-size: 11px;
-  letter-spacing: 20%;
+  letter-spacing: 0.2em;
   color: var(--dark-color);
-
-  outline: 1px solid red;
-} */
+}
 
 .hero-overlay {
   max-width: 1070px;
@@ -224,7 +254,7 @@ footer .link:is(:hover, :focus) {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-top: 92px;
+  padding-top: 272px;
   padding-left: 100px;
 }
 
@@ -251,8 +281,9 @@ footer .link:is(:hover, :focus) {
   font-size: 11px;
 }
 
+.aside-media:before,
 .subtitle::before,
-footer .list::before {
+footer .list:before {
   content: "";
   display: block;
   width: 60px;
@@ -353,6 +384,10 @@ footer .list::before {
   line-height: 1.86;
 }
 
+.about .btn {
+  color: var(--dark-color);
+}
+
 /* -------------------- SERVICES-AND-PRICES ------------------- */
 
 .services-and-prices-overlay {
@@ -433,9 +468,10 @@ footer .list::before {
 .advantages .list {
   display: flex;
   flex-wrap: wrap;
-  width: 370px;
-  margin-left: 100px;
-  margin-right: 130px;
+  /* width: 370px; */
+  padding-left: 85px;
+
+  padding-right: 130px;
 }
 
 .advantages li {
@@ -470,12 +506,15 @@ footer .list::before {
 }
 
 .advantages .for-plus-in-after {
-  display: flex;
-  justify-content: center;
+  position: relative;
+  /* display: flex;
+  justify-content: center;  - треба було якби не position*/
 }
 
 .advantages .for-plus-in-after::after {
   content: "+";
+  position: absolute;
+  top: 7px;
   align-self: flex-start;
   font-size: 16px;
   font-weight: 600;
@@ -514,11 +553,36 @@ footer .list::before {
 /* для того, щоб не ламалася сітка в разі, якщо одна з карток не завантажилася */
 
 .our-barbers .card-thumb {
+  position: relative;
   margin-bottom: 30px;
+  overflow-y: hidden;
 }
 
 .our-barbers img {
   max-width: 100%;
+}
+
+.our-barbers .thumb-text {
+  position: absolute;
+  top: 0;
+  display: inline-block;
+
+  height: 100%;
+  padding: 45px;
+  overflow-y: auto;
+  color: var(--light-color-second);
+  font-size: 18px;
+  text-shadow: 1px 1px 4px var(--dark-color);
+  background-color: rgba(239, 109, 56, 0.8);
+
+  transform: translateY(-100%);
+
+  transition: transform 250ms ease-in-out;
+}
+
+.card-thumb:is(:hover, :focus) .thumb-text {
+  transform: translateY(0);
+  cursor: pointer;
 }
 
 .our-barbers .card-info {
@@ -563,6 +627,8 @@ footer .list::before {
 .our-barbers .card-media-item svg:is(:hover, :focus) {
   cursor: pointer;
   fill: var(--accent-color);
+
+  transition: fill 250ms ease-in-out;
 }
 
 /* -------------------- PHOTO-GALLERY ------------------- */
@@ -657,7 +723,7 @@ footer .container {
   display: flex;
   padding-top: 56px;
   padding-bottom: 56px;
-  
+
   font-weight: 600;
   font-size: 11px;
 }
@@ -673,3 +739,49 @@ footer .list {
   gap: 40px;
   color: var(--dark-color);
 }
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  visibility: 1;
+
+  transition: opacity 250ms ease-in-out, visibility 250ms ease-in-out;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  min-width: 50%;
+  min-height: 50%;
+  border-radius: 5px;
+  background-color: var(--light-color-first);
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  transition: transform 250ms ease-in-out;
+}
+
+.modal-btn {
+  color: var(--dark-color);
+  background-color: inherit;
+}
+
+.is-hidden.backdrop {
+  opacity: 0;
+  visibility: 0;
+  pointer-events: none;
+}
+
+.is-hidden.backdrop .modal {
+  transform: translate(-50%, -50%) scale(0.5);
+}
+/* важливе формулювання класів */

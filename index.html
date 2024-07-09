@@ -31,7 +31,7 @@
             <li class="nav-menu-item nav-menu-first-item">
               <a href="#about" class="paddings-for-a link"> About </a>
             </li>
-            <li class="nav-menu-item nav-menu-first-item">
+            <li class="nav-menu-item nav-menu-first-item current-active">
               <a href="#services-and-prices" class="paddings-for-a link">
                 Services and prices
               </a>
@@ -48,7 +48,7 @@
               <a href="tel:" class="paddings-for-a link">+38 044 111 11 11</a>
             </li>
             <li class="nav-menu-item nav-menu-second-item">
-              <button type="button" class="nav-button link btn">
+              <button type="button" data-modal-open class="nav-button link btn">
                 Online-booking
               </button>
             </li>
@@ -65,7 +65,7 @@
               <ul class="list aside-media">
                 <li class="aside-media-item">
                   <a
-                    class="link"
+                    class="link paddings-for-a"
                     href=""
                     target="_blank"
                     rel="noopener noreferrer nofollow"
@@ -74,7 +74,7 @@
                 </li>
                 <li class="aside-media-item">
                   <a
-                    class="link"
+                    class="link paddings-for-a"
                     href=""
                     target="_blank"
                     rel="noopener noreferrer nofollow"
@@ -127,7 +127,9 @@
               always "on the same wave" with clients. Therefore, we are always
               ready to improve everyone who comes to us!
             </p>
-            <button class="button btn bth-text">ONLINE-BOOKING</button>
+            <button data-modal-open class="button btn bth-text">
+              ONLINE-BOOKING
+            </button>
           </div>
         </div>
       </section>
@@ -205,7 +207,9 @@
               </li>
             </ul>
           </div>
-          <button type="button" class="link btn">Online-booking</button>
+          <button type="button" data-modal-open class="link btn">
+            Online-booking
+          </button>
         </div>
       </section>
 
@@ -253,6 +257,13 @@
             <li class="card">
               <div class="card-thumb">
                 <img src="./img/barber-1.jpg" alt="barber one" width="370" />
+                <p class="thumb-text">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo,
+                  quaerat nisi nemo animi quisquam quam optio. Necessitatibus
+                  molestiae incidunt, itaque illum dicta repudiandae blanditiis
+                  a doloremque tempora odio laboriosam ratione! Laboriosam rerum
+                  assumenda commodi?
+                </p>
               </div>
               <div class="card-info">
                 <h4>John Smith</h4>
@@ -309,6 +320,12 @@
             <li class="card">
               <div class="card-thumb">
                 <img src="./img/barber-2.jpg" alt="barber one" width="370" />
+                <p class="thumb-text">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
+                  asperiores totam voluptatibus ut. Amet provident eligendi,
+                  enim ratione asperiores vitae nisi ea eveniet est quod,
+                  possimus quisquam in quibusdam sed.
+                </p>
               </div>
               <div class="card-info">
                 <h4>Michele Doe</h4>
@@ -365,6 +382,12 @@
             <li class="card">
               <div class="card-thumb">
                 <img src="./img/barber-3.jpg" alt="barber one" width="370" />
+                <p class="thumb-text">
+                  Et, magni! Adipisci reprehenderit, commodi, ullam aspernatur
+                  nesciunt autem hic consequuntur delectus eius beatae ea magni
+                  iusto, facere quibusdam nemo porro? Adipisci cum pariatur
+                  quisquam ut eos temporibus vitae sint cupiditate delectus!
+                </p>
               </div>
               <div class="card-info">
                 <h4>Alan Black</h4>
@@ -533,7 +556,7 @@
         <ul class="list">
           <li>
             <a
-              class="link"
+              class="link paddings-for-a"
               href="/"
               target="_blank"
               rel="noopener noreferrer nofollow"
@@ -542,7 +565,7 @@
           </li>
           <li>
             <a
-              class="link"
+              class="link paddings-for-a"
               href="/"
               target="_blank"
               rel="noopener noreferrer nofollow"
@@ -552,5 +575,14 @@
         </ul>
       </div>
     </footer>
+
+    <div data-modal class="backdrop is-hidden">
+      <div class="modal">
+        <button data-modal-close class="modal-btn btn" type="button">
+          Close
+        </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
