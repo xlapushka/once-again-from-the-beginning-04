@@ -556,6 +556,7 @@ footer .list:before {
   position: relative;
   margin-bottom: 30px;
   overflow-y: hidden;
+  cursor: pointer;
 }
 
 .our-barbers img {
@@ -577,12 +578,11 @@ footer .list:before {
 
   transform: translateY(-100%);
 
-  transition: transform 250ms ease-in-out;
+  transition: transform 250ms ease-in-out 1000ms;
 }
 
 .card-thumb:is(:hover, :focus) .thumb-text {
   transform: translateY(0);
-  cursor: pointer;
 }
 
 .our-barbers .card-info {
@@ -616,17 +616,18 @@ footer .list:before {
   justify-content: center;
   width: 100%;
   height: 100%;
+  color: var(--dark-color);
 }
 
 .our-barbers .card-media-item svg {
   width: 20px;
   height: 20px;
-  fill: var(--dark-color);
+  fill: currentColor;
 }
 
-.our-barbers .card-media-item svg:is(:hover, :focus) {
+.our-barbers .card-media-item:is(:hover, :focus) {
   cursor: pointer;
-  fill: var(--accent-color);
+  color: var(--accent-color);
 
   transition: fill 250ms ease-in-out;
 }
@@ -643,6 +644,10 @@ footer .list:before {
 
 .photos-gallery img {
   width: calc((100% - 90px) / 4);
+}
+
+.photos-gallery img:nth-child(n + 5) {
+  transform: scaleX(-1);
 }
 
 .photos .subtitle {
@@ -676,9 +681,133 @@ footer .list:before {
   padding-bottom: 44px;
 }
 
+.online-booking .booking-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 44px;
+
+  text-transform: uppercase;
+}
+
+.online-booking .booking-row {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.booking-form-field {
+  position: relative;
+  color: rgba(157, 164, 189, 0.4);
+
+  transition: color 250ms ease-in-out;
+}
+
+.booking-form-field:focus-within input:placeholder-shown {
+  caret-color: transparent;
+}
+
+.booking-form-field:focus-within {
+  color: var(--light-color-first);
+}
+
+.booking-form-field input {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-width: 270px;
+  height: 24px;
+
+  background-color: inherit;
+  border: none;
+  color: var(--light-color-first);
+  font-size: 18px;
+  line-height: 1.66;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+
+  border: 1px solid transparent;
+  border-bottom-color: rgba(157, 164, 189, 0.4);
+
+  transition: border-bottom-color 250ms ease-in-out;
+}
+
+.booking-form-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  font-size: 11px;
+  font-weight: 600px;
+  line-height: 14.98px;
+  letter-spacing: 0.1em;
+
+  transition: transform 250ms ease-in-out;
+}
+
+.booking-form-field:focus-within input {
+  outline: 2px solid transparent;
+  border-bottom-color: var(--light-color-first);
+}
+
+.booking-form-field input:not(:placeholder-shown) + label {
+  transform: translateY(-36px);
+  color: var(--light-color-first);
+}
+
+.booking-form-field textarea {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-width: 570px;
+  height: 76px;
+  resize: none;
+
+  background-color: inherit;
+  color: var(--light-color-first);
+  font-size: 18px;
+  line-height: 1.66;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+
+  border: 1px solid transparent;
+  border-bottom-color: rgba(157, 164, 189, 0.4);
+
+  transition: border-bottom-color 250ms ease-in-out;
+}
+
+.booking-form-field textarea + label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0);
+
+  font-size: 11px;
+  font-weight: 600px;
+  line-height: 14.98px;
+  letter-spacing: 0.1em;
+
+  transition: transform 250ms ease-in-out;
+}
+
+.booking-form-field:focus-within textarea {
+  outline: 2px solid transparent;
+  border-bottom-color: var(--light-color-first);
+}
+
+.booking-form-field:focus-within textarea + label {
+  transform: translateY(-21px);
+  color: var(--light-color-first);
+}
+
+.online-booking .btn {
+  align-self: flex-start;
+  width: 160px;
+  color: var(--light-color-first);
+}
+
 .contacts {
-  width: calc(50% - 15px);
-  padding-left: 100px;
+  padding-left: 105px;
 }
 
 .contacts .list {
@@ -740,6 +869,8 @@ footer .list {
   color: var(--dark-color);
 }
 
+/* -------------------- MODAL ------------------- */
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -759,20 +890,45 @@ footer .list {
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
   min-width: 50%;
-  min-height: 50%;
   border-radius: 5px;
   background-color: var(--light-color-first);
   padding: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
 
   transition: transform 250ms ease-in-out;
 }
 
 .modal-btn {
+  display: inline-block;
+  min-width: 20px;
+  height: auto;
+  padding: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-16px, 16px);
+  border-color: transparent;
+
   color: var(--dark-color);
   background-color: inherit;
+}
+
+.modal-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--medium-color-second);
+  cursor: pointer;
+
+  transition: fill 250ms ease-in-out;
+}
+
+.modal-btn:is(:hover, :focus) {
+  background-color: var(--light-color-first);
+}
+
+.modal-btn:is(:hover, :focus) svg {
+  fill: var(--accent-color);
+
+  transition: fill 250ms ease-in-out;
 }
 
 .is-hidden.backdrop {
@@ -785,3 +941,160 @@ footer .list {
   transform: translate(-50%, -50%) scale(0.5);
 }
 /* важливе формулювання класів */
+
+/* -------------------- FORM-IN-MODAL ------------------- */
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 36px;
+
+  color: var(--dark-color);
+  font-size: 14px;
+}
+
+.modal-form .btn {
+  align-self: center;
+  width: 160px;
+}
+
+.form-legend {
+  margin-bottom: 32px;
+
+  font-size: 28px;
+  font-weight: bold;
+  line-height: 1.66;
+}
+
+.form-field {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 36px;
+}
+
+.form-field label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-left: 8px;
+
+  color: var(--medium-color-second);
+  transition: color 250ms ease-in-out;
+}
+
+.form-field label svg {
+  width: 20px;
+  height: 20px;
+  fill: inherit;
+
+  transition: fill 250ms ease-in-out;
+}
+
+.form-field input {
+  margin: 0;
+  padding: 11px 22px 11px 36px;
+  border: 2px dotted var(--medium-color);
+  border-radius: 4px;
+
+  font-size: 18px;
+  color: inherit;
+}
+
+.form-field label span {
+  transition: transform 250ms ease-in-out;
+}
+
+.form-field:focus-within label span,
+.form-field input:not(:placeholder-shown) + label span {
+  /* обовʼязково звертатися до сусіда, бо вони на одному рівні. це для того, щоб коли був введений текст label не опускався назад. в верстці для цього зроблений placeholder=" "!!! */
+  transform: translateY(-36px);
+}
+
+.form-field:focus-within input {
+  outline: 2px solid var(--accent-color);
+}
+/* замінити колір обводки при фокусі */
+
+.form-field:focus-within label {
+  color: var(--accent-color);
+}
+
+.form-field:focus-within svg {
+  fill: var(--accent-color);
+}
+
+/* -------------------- FORM-IN-MODAL RADIO ------------------- */
+
+.form-field-radio {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 48px;
+}
+
+.form-field-radio .legend {
+  margin-right: 32px;
+}
+
+.form-field-radio .list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+  row-gap: 12px;
+}
+
+.form-field-radio li label {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.form-field-radio li input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  appearance: none;
+}
+/* візуально і з потоку скритий кастомний input, на його місце ставиться svg або афтер, якщо це рамка-квадратик, куди буде вписуватись птім галочка */
+
+.form-field-radio li input::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 2px solid var(--medium-color);
+}
+
+.form-field-radio span svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  fill: transparent;
+  border-radius: 4px;
+
+  transition: fill 250ms ease-in-out;
+}
+
+.form-field-radio .text-span {
+  padding-left: 6px;
+}
+
+.form-field-radio input:checked + span svg {
+  fill: var(--accent-color);
+}
+
+.form-field-radio input:checked::before {
+  border: 2px solid var(--accent-color);
+}

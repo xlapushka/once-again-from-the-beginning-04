@@ -11,6 +11,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.0.0/modern-normalize.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
 
@@ -270,7 +274,10 @@
                 <p>Extreme Barber</p>
                 <ul class="list">
                   <li class="card-media">
-                    <a class="card-media-item link" aria-label="insta label">
+                    <a
+                      class="card-media-item link paddings-for-a"
+                      aria-label="insta label"
+                    >
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-instagram"
@@ -281,7 +288,10 @@
                     </a>
                   </li>
                   <li class="card-media">
-                    <a class="card-media-item link" aria-label="twitter label">
+                    <a
+                      class="card-media-item link paddings-for-a"
+                      aria-label="twitter label"
+                    >
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-twitter"
@@ -292,7 +302,10 @@
                     </a>
                   </li>
                   <li class="card-media">
-                    <a class="card-media-item link" aria-label="facebook label">
+                    <a
+                      class="card-media-item link paddings-for-a"
+                      aria-label="facebook label"
+                    >
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-facebook"
@@ -303,7 +316,10 @@
                     </a>
                   </li>
                   <li class="card-media">
-                    <a class="card-media-item link" aria-label="linkedin label">
+                    <a
+                      class="card-media-item link paddings-for-a"
+                      aria-label="linkedin label"
+                    >
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-linkedin"
@@ -497,6 +513,40 @@
         <div class="container div-flex">
           <div class="online-booking">
             <h2>Online-booking</h2>
+            <form class="booking-form" autocomplete="off">
+              <div class="booking-row">
+                <div class="booking-form-field">
+                  <input
+                    id="booking-user-name"
+                    name="booking-user-name"
+                    type="text"
+                    placeholder=" "
+                  />
+                  <label for="booking-user-name"> Name<span>*</span></label>
+                </div>
+                <div class="booking-form-field">
+                  <input
+                    id="booking-user-phone"
+                    name="booking-user-phone"
+                    type="tel"
+                    placeholder=" "
+                  />
+                  <label for="booking-user-phone">Phone<span>*</span></label>
+                </div>
+              </div>
+              <div class="booking-form-field">
+                <textarea
+                  id="booking-user-message"
+                  name="booking-user-message"
+                  rows="3"
+                ></textarea>
+                <label for="booking-user-message">Message</label>
+              </div>
+
+              <button type="submit" class="btn" data-modal-close>
+                <span>Send</span>
+              </button>
+            </form>
           </div>
 
           <div class="contacts">
@@ -579,8 +629,178 @@
     <div data-modal class="backdrop is-hidden">
       <div class="modal">
         <button data-modal-close class="modal-btn btn" type="button">
-          Close
+          <span>
+            <svg>
+              <use
+                href="./img/symbol-defs-1.svg#icon-cancel-circle"
+                width="20px"
+                height="20px"
+              ></use>
+            </svg>
+          </span>
         </button>
+
+        <form class="modal-form" autocomplete="off">
+          <h2 class="form-legend">Tell us about yourself</h2>
+          <div class="form-field">
+            <input
+              id="user-name"
+              name="user-name"
+              type="text"
+              placeholder=" "
+            />
+            <label for="user-name">
+              <svg>
+                <use
+                  href="./img/symbol-defs-1.svg#icon-user"
+                  width="20px"
+                  height="20px"
+                ></use>
+              </svg>
+              <span>Your Name</span>
+            </label>
+            <!-- важливо звертатися до сусіда далі, тож lable має бути нижче в верстці -->
+          </div>
+
+          <div class="form-field">
+            <input
+              id="user-email"
+              name="user-email"
+              type="email"
+              placeholder=" "
+            />
+            <!-- !!!обовʼязково треба задати placeholder, щоб коли він зник робилися зміни transformY -->
+            <label for="user-email" lang="en">
+              <svg>
+                <use
+                  href="./img/symbol-defs.svg#icon-mail"
+                  width="20px"
+                  height="20px"
+                ></use>
+              </svg>
+              <span>Your E-mail</span>
+            </label>
+          </div>
+
+          <div class="form-field">
+            <input id="user-tel" name="user-tel" type="tel" placeholder=" " />
+            <label for="user-tel">
+              <svg>
+                <use
+                  href="./img/symbol-defs.svg#icon-phone"
+                  width="20px"
+                  height="20px"
+                ></use>
+              </svg>
+              <span>Your Cell number</span>
+            </label>
+          </div>
+
+          <div class="form-field-radio">
+            <h3 class="legend">You Age</h3>
+            <ul class="list" role="group">
+              <li>
+                <label>
+                  <input type="radio" name="user-age" value="12-18" checked />
+                  <span>
+                    <svg>
+                      <use
+                        href="./img/symbol-defs-1.svg#icon-checkbox-checked"
+                        width="20px"
+                        height="20px"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="text-span">12-18</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input type="radio" name="user-age" value="18-25" />
+                  <span>
+                    <svg>
+                      <use
+                        href="./img/symbol-defs-1.svg#icon-checkbox-checked"
+                        width="20px"
+                        height="20px"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="text-span">18-25</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input type="radio" name="user-age" value="25-30" />
+                  <span>
+                    <svg>
+                      <use
+                        href="./img/symbol-defs-1.svg#icon-checkbox-checked"
+                        width="20px"
+                        height="20px"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="text-span">25-30</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input type="radio" name="user-age" value="30-35" />
+                  <span>
+                    <svg>
+                      <use
+                        href="./img/symbol-defs-1.svg#icon-checkbox-checked"
+                        width="20px"
+                        height="20px"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="text-span">30-35</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input type="radio" name="user-age" value="35-40" />
+                  <span>
+                    <svg>
+                      <use
+                        href="./img/symbol-defs-1.svg#icon-checkbox-checked"
+                        width="20px"
+                        height="20px"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="text-span">35-40</span>
+                </label>
+              </li>
+
+              <li>
+                <label>
+                  <input type="radio" name="user-age" value="40+" />
+                  <span>
+                    <svg>
+                      <use
+                        href="./img/symbol-defs-1.svg#icon-checkbox-checked"
+                        width="20px"
+                        height="20px"
+                      ></use>
+                    </svg>
+                  </span>
+                  <span class="text-span">40+</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+
+          <button type="submit" class="btn" data-modal-close>
+            <span>Send</span>
+          </button>
+        </form>
       </div>
     </div>
     <script src="./js/modal.js"></script>
