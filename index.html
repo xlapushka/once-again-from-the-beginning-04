@@ -15,7 +15,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/styles-adaptiv.css" />
+    <link rel="stylesheet" href="./css/mobile.css" />
+    <link rel="stylesheet" href="./css/tablette.css" />
+    <link rel="stylesheet" href="./css/desktop.css" />
   </head>
 
   <body>
@@ -32,23 +35,25 @@
             </svg>
           </a>
           <ul class="list nav-menu first">
-            <li class="nav-menu-item nav-menu-first-item">
+            <li class="nav-menu-item nav-menu-first-item paddings-for-a">
               <a href="#about" class="paddings-for-a link"> About </a>
             </li>
-            <li class="nav-menu-item nav-menu-first-item current-active">
+            <li
+              class="nav-menu-item nav-menu-first-item current-active paddings-for-a"
+            >
               <a href="#services-and-prices" class="paddings-for-a link">
                 Services and prices
               </a>
             </li>
-            <li class="nav-menu-item nav-menu-first-item">
+            <li class="nav-menu-item nav-menu-first-item paddings-for-a">
               <a href="#barbers" class="paddings-for-a link"> Barbers </a>
             </li>
-            <li class="nav-menu-item nav-menu-first-item">
+            <li class="nav-menu-item nav-menu-first-item paddings-for-a">
               <a href="#contacts" class="paddings-for-a link"> Contacts </a>
             </li>
           </ul>
           <ul class="list nav-menu second">
-            <li class="nav-menu-item nav-menu-second-item">
+            <li class="nav-menu-item nav-menu-second-item paddings-for-a">
               <a href="tel:" class="paddings-for-a link">+38 044 111 11 11</a>
             </li>
             <li class="nav-menu-item nav-menu-second-item">
@@ -57,13 +62,96 @@
               </button>
             </li>
           </ul>
+          <button data-mobile-menu-open class="btn-menu-burger" type="button">
+            <svg>
+              <use
+                href="./img/symbol-defs-2.svg#icon-menu-burger"
+                width="40px"
+                height="40px"
+              ></use>
+            </svg>
+          </button>
         </nav>
+      </div>
+
+      <div data-mobile-menu class="backdrop is-hidden">
+        <div class="mobile-menu-container">
+          <div class="mobile-menu element">
+            <button
+              data-mobile-menu-close
+              class="mobile-btn-close paddings-for-a"
+              type="button"
+            >
+              <span>
+                <svg>
+                  <use
+                    href="./img/symbol-defs-2.svg#icon-menu-close"
+                    width="40px"
+                    height="40px"
+                  ></use>
+                </svg>
+              </span>
+            </button>
+            <ul class="list mobile-menu-first">
+              <li class="mobile-menu-item mobile-menu-first-item">
+                <a href="#about" class="paddings-for-a link"> About </a>
+              </li>
+              <li class="mobile-menu-item mobile-menu-first-item">
+                <a href="#services-and-prices" class="paddings-for-a link">
+                  Services and prices
+                </a>
+              </li>
+              <li class="mobile-menu-item mobile-menu-first-item">
+                <a href="#barbers" class="paddings-for-a link"> Barbers </a>
+              </li>
+              <li class="mobile-menu-item mobile-menu-first-item">
+                <a href="#contacts" class="paddings-for-a link"> Contacts </a>
+              </li>
+            </ul>
+            <ul class="list mobile-menu-second">
+              <li class="mobile-menu-item mobile-menu-second-item">
+                <a href="tel:" class="paddings-for-a link">+38 044 111 11 11</a>
+              </li>
+              <li class="mobile-menu-item mobile-menu-second-item">
+                <button
+                  type="button"
+                  data-modal-open
+                  class="mobile-menu-button link btn"
+                >
+                  Online-booking
+                </button>
+              </li>
+            </ul>
+            <div class="mobile-aside-menu">
+              <ul class="list mobile-aside-media">
+                <li class="mobile-aside-media-item">
+                  <a
+                    class="link paddings-for-a"
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    >Instagram</a
+                  >
+                </li>
+                <li class="mobile-aside-media-item">
+                  <a
+                    class="link paddings-for-a"
+                    href=""
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    >Youtube</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
 
     <main>
       <section>
-        <div class="container">
+        <div class="container hero-container">
           <div class="hero">
             <div class="aside-menu">
               <ul class="list aside-media">
@@ -88,14 +176,18 @@
               </ul>
             </div>
             <div class="hero-content hero-overlay">
-              <div class="h-reverse">
-                <h1>BarberShop</h1>
-                <h2 class="subtitle">A hair salon for men in Kyiv</h2>
+              <div class="container">
+                <div class="h-reverse">
+                  <h1>BarberShop</h1>
+                  <h2 class="subtitle hide-subtitle">
+                    A hair salon for men in Kyiv
+                  </h2>
+                </div>
+                <h3>
+                  We are experts in trendy men’s haircuts.<br />
+                  We work quickly, carefully and with style.
+                </h3>
               </div>
-              <h3>
-                We are experts in trendy men’s haircuts.<br />
-                We work quickly, carefully and with style.
-              </h3>
             </div>
           </div>
         </div>
@@ -103,22 +195,80 @@
 
       <section class="about" id="about">
         <div class="container div-flex">
-          <div class="about-photo">
-            <img
-              src="./img/about-1.jpg"
-              alt="barber's hands are shaving"
-              width="270"
-            />
-            <img
-              src="./img/about-2.jpg"
-              alt="barber's hands are doing fine haircut"
-              width="270"
-            />
-          </div>
+          <ul class="list about-photo">
+            <li>
+              <picture>
+                <source
+                  srcset="
+                    ./img/about-1-desktop_1x.jpg  1x,
+                    ./img/about-1-desktop_2x.webp 2x
+                  "
+                  media="(min-width: 1200px)"
+                />
+                <source
+                  srcset="
+                    ./img/about-1-medium_1x.jpg  1x,
+                    ./img/about-1-medium_2x.webp 2x
+                  "
+                  media="(min-width: 768px)"
+                />
+                <!-- намішано форматів, полінвалась перевираховувати -->
+                <!-- sizes=""
+                  Репета радив задавати, але Андрій про це ані словo -->
+                <img
+                  src="./img/about-1-medium_1x.jpg"
+                  alt="barber one"
+                  width="330"
+                />
+                <!-- задати ширину по найбільшій картинці (тут не витримується умова) -->
+              </picture>
+
+              <!-- робила до picture два класа і display: none для показу різного формату карток. але правильніше через picture, оскількі вантажиться тільки те, що треба
+              <img
+                class="about-img-for-smaller-formats"
+                src="./img/about-1.jpg"
+                alt="barber's hands are shaving"
+                width="270"
+              />
+              <img
+                class="about-img-for-desktop-version"
+                src="./img/about-desktop-1.jpg"
+                alt="barber's hands are shaving"
+                width="270"
+              /> -->
+            </li>
+            <li>
+              <picture>
+                <source
+                  srcset="
+                    ./img/about-2-desktop_1x.jpg  1x,
+                    ./img/about-2-desktop_2x.webp 2x
+                  "
+                  media="(min-width: 1200px)"
+                />
+                <source
+                  srcset="
+                    ./img/about-2-medium_1x.jpg  1x,
+                    ./img/about-2-medium_2x.webp 2x
+                  "
+                  media="(min-width: 768px)"
+                />
+                <!-- намішано форматів, полінвалась перевираховувати -->
+                <!-- sizes=""
+                  Репета радив задавати, але Андрій про це ані словo -->
+                <img
+                  src="./img/about-2-medium_1x.jpg"
+                  alt="barber one"
+                  width="330"
+                />
+                <!-- задати ширину по найбільшій картинці (тут не витримується умова) -->
+              </picture>
+            </li>
+          </ul>
           <div class="about-content">
             <div class="h-no-reverse">
               <h2 class="subtitle">About</h2>
-              <h3>Best Barbershop in your city</h3>
+              <h3>Best Barbershop in <br />your city</h3>
             </div>
             <h4>
               If you want to add more confidence to your image, you should
@@ -221,7 +371,9 @@
         <div class="container div-flex">
           <ul class="list">
             <li>
-              <p class="for-plus-in-after"><span>600</span></p>
+              <p class="for-plus-in-after">
+                <span class="element-2">600</span>
+              </p>
               <p>Satisfied customers per day</p>
             </li>
             <li>
@@ -260,7 +412,34 @@
           <ul class="cards list">
             <li class="card">
               <div class="card-thumb">
-                <img src="./img/barber-1.jpg" alt="barber one" width="370" />
+                <picture>
+                  <source
+                    srcset="
+                      ./img/our-barb-1-big_1x.webp 1x,
+                      ./img/our-barb-1-big_2x.webp 2x
+                    "
+                    media="(min-width: 1200px)"
+                  />
+                  <source
+                    srcset="
+                      ./img/our-barb-1-medium_1x.webp 1x,
+                      ./img/our-barb-1-medium_2x.webp 2x
+                    "
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="
+                      ./img/our-barb-1-small_1x.webp 1x,
+                      ./img/our-barb-1-small_2x.webp 2x
+                    "
+                    media="(max-width: 767px)"
+                  />
+                  <!-- sizes=""
+                  Репета радив задавати, але Андрій про це ані словo -->
+                  <img src="./img/barber-1.jpg" alt="barber one" width="370" />
+                  <!-- задати ширину по найбільшій картинці (тут не витримується умова) -->
+                </picture>
+
                 <p class="thumb-text">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo,
                   quaerat nisi nemo animi quisquam quam optio. Necessitatibus
@@ -274,10 +453,7 @@
                 <p>Extreme Barber</p>
                 <ul class="list">
                   <li class="card-media">
-                    <a
-                      class="card-media-item link paddings-for-a"
-                      aria-label="insta label"
-                    >
+                    <a class="card-media-item link" aria-label="insta label">
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-instagram"
@@ -288,10 +464,7 @@
                     </a>
                   </li>
                   <li class="card-media">
-                    <a
-                      class="card-media-item link paddings-for-a"
-                      aria-label="twitter label"
-                    >
+                    <a class="card-media-item link" aria-label="twitter label">
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-twitter"
@@ -302,10 +475,7 @@
                     </a>
                   </li>
                   <li class="card-media">
-                    <a
-                      class="card-media-item link paddings-for-a"
-                      aria-label="facebook label"
-                    >
+                    <a class="card-media-item link" aria-label="facebook label">
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-facebook"
@@ -316,10 +486,7 @@
                     </a>
                   </li>
                   <li class="card-media">
-                    <a
-                      class="card-media-item link paddings-for-a"
-                      aria-label="linkedin label"
-                    >
+                    <a class="card-media-item link" aria-label="linkedin label">
                       <svg>
                         <use
                           href="./img/symbol-defs.svg#icon-linkedin"
@@ -335,7 +502,33 @@
 
             <li class="card">
               <div class="card-thumb">
-                <img src="./img/barber-2.jpg" alt="barber one" width="370" />
+                <picture>
+                  <source
+                    srcset="
+                      ./img/our-barb-2-big_1x.webp 1x,
+                      ./img/our-barb-2-big_2x.webp 2x
+                    "
+                    media="(min-width: 1200px)"
+                  />
+                  <source
+                    srcset="
+                      ./img/our-barb-2-medium_1x.webp 1x,
+                      ./img/our-barb-2-medium_2x.webp 2x
+                    "
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="
+                      ./img/our-barb-2-small_1x.webp 1x,
+                      ./img/our-barb-2-small_2x.webp 2x
+                    "
+                    media="(max-width: 767px)"
+                  />
+                  <!-- sizes=""
+                  Репета радив задавати, але Андрій про це ані словo -->
+                  <img src="./img/barber-2.jpg" alt="barber one" width="370" />
+                  <!-- задати ширину по найбільшій картинці (тут не витримується умова) -->
+                </picture>
                 <p class="thumb-text">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
                   asperiores totam voluptatibus ut. Amet provident eligendi,
@@ -397,7 +590,33 @@
 
             <li class="card">
               <div class="card-thumb">
-                <img src="./img/barber-3.jpg" alt="barber one" width="370" />
+                <picture>
+                  <source
+                    srcset="
+                      ./img/our-barb-3-big_1x.webp 1x,
+                      ./img/our-barb-3-big_2x.webp 2x
+                    "
+                    media="(min-width: 1200px)"
+                  />
+                  <source
+                    srcset="
+                      ./img/our-barb-3-medium_1x.webp 1x,
+                      ./img/our-barb-3-medium_2x.webp 2x
+                    "
+                    media="(min-width: 768px)"
+                  />
+                  <source
+                    srcset="
+                      ./img/our-barb-3-small_1x.webp 1x,
+                      ./img/our-barb-3-small_2x.webp 2x
+                    "
+                    media="(max-width: 767px)"
+                  />
+                  <!-- sizes=""
+                  Репета радив задавати, але Андрій про це ані словo -->
+                  <img src="./img/barber-3.jpg" alt="barber one" width="370" />
+                  <!-- задати ширину по найбільшій картинці (тут не витримується умова) -->
+                </picture>
                 <p class="thumb-text">
                   Et, magni! Adipisci reprehenderit, commodi, ullam aspernatur
                   nesciunt autem hic consequuntur delectus eius beatae ea magni
@@ -464,48 +683,71 @@
         <div class="container">
           <h2 class="visually-hidden">Photos</h2>
           <h3 class="subtitle">In Latin, "barba" means "beard"</h3>
-          <div class="photos-gallery">
-            <img
-              src="./img/Rectangle-25.jpg"
-              alt="barber is haircutting"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-26.jpg"
-              alt="barber is haircutting"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-27.jpg"
-              alt="barber is working"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-28.jpg"
-              alt="barber's hands are haircutting"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-25.jpg"
-              alt="barber is haircutting"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-26.jpg"
-              alt="barber is haircutting"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-27.jpg"
-              alt="barber is working"
-              width="270"
-            />
-            <img
-              src="./img/Rectangle-28.jpg"
-              alt="barber's hands are haircutting"
-              width="270"
-            />
-          </div>
+          <ul class="list photos-gallery">
+            <li>
+              <img
+                src="./img/Rectangle-25.jpg"
+                alt="barber is haircutting"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-26.jpg"
+                alt="barber is haircutting"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-27.jpg"
+                alt="barber is working"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-28.jpg"
+                alt="barber's hands are haircutting"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-25.jpg"
+                alt="barber is haircutting"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-26.jpg"
+                alt="barber is haircutting"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-27.jpg"
+                alt="barber is working"
+                width="270"
+              />
+            </li>
+
+            <li>
+              <img
+                src="./img/Rectangle-28.jpg"
+                alt="barber's hands are haircutting"
+                width="270"
+              />
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -549,51 +791,53 @@
             </form>
           </div>
 
-          <div class="contacts">
+          <div class="contacts div-flex">
             <h2>Contacts</h2>
-            <address>
-              <ul class="list">
-                <li class="map-address">
-                  <a class="link city-street" href="">
-                    <svg>
-                      <use
-                        href="./img/symbol-defs.svg#icon-location"
-                        width="24px"
-                        height="24px"
-                      ></use>
-                    </svg>
-                    st. Vasilkivska, 7A Kyiv, 08132
-                  </a>
-                </li>
-                <li>
-                  <a class="link tel" href="tel:+380441111111">
-                    <svg>
-                      <use
-                        href="./img/symbol-defs.svg#icon-phone"
-                        width="24px"
-                        height="24px"
-                      ></use>
-                    </svg>
-                    +38 044 111 11 11
-                  </a>
-                </li>
-                <li>
-                  <a class="link email" href="mailto:barbershop@email.com">
-                    <svg>
-                      <use
-                        href="./img/symbol-defs.svg#icon-mail"
-                        width="24px"
-                        height="24px"
-                      ></use>
-                    </svg>
-                    barbershop@email.com
-                  </a>
-                </li>
-              </ul>
-            </address>
-            <div class="working-hours">
-              <h3 class="subtitle">Working hours</h3>
-              <p>Every day from 9:00 to 22:00</p>
+            <div class="div-for-contacts">
+              <address>
+                <ul class="list">
+                  <li class="map-address">
+                    <a class="link city-street" href="">
+                      <svg>
+                        <use
+                          href="./img/symbol-defs.svg#icon-location"
+                          width="24px"
+                          height="24px"
+                        ></use>
+                      </svg>
+                      st. Vasilkivska, 7A Kyiv, 08132
+                    </a>
+                  </li>
+                  <li>
+                    <a class="link tel" href="tel:+380441111111">
+                      <svg>
+                        <use
+                          href="./img/symbol-defs.svg#icon-phone"
+                          width="24px"
+                          height="24px"
+                        ></use>
+                      </svg>
+                      +38 044 111 11 11
+                    </a>
+                  </li>
+                  <li>
+                    <a class="link email" href="mailto:barbershop@email.com">
+                      <svg>
+                        <use
+                          href="./img/symbol-defs.svg#icon-mail"
+                          width="24px"
+                          height="24px"
+                        ></use>
+                      </svg>
+                      barbershop@email.com
+                    </a>
+                  </li>
+                </ul>
+              </address>
+              <div class="working-hours">
+                <h3 class="subtitle">Working hours</h3>
+                <p>Every day from 9:00 to 22:00</p>
+              </div>
             </div>
           </div>
         </div>
@@ -803,6 +1047,7 @@
         </form>
       </div>
     </div>
+    <script src="./js/mobile-menu.js"></script>
     <script src="./js/modal.js"></script>
   </body>
 </html>

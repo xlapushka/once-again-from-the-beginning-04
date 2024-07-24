@@ -24,20 +24,21 @@ body {
 
 img {
   display: block;
+
+  /* тимчасові стилі */
+  width: 100%;
+  max-width: 100%;
+  height: auto;
 }
 
 .container {
-  width: 1200px;
+  width: 100%;
   /* перевірити довжину!! довжина по макету + два падінгі по 15px */
   height: 100%;
   margin-left: auto;
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-}
-
-.photos-gallery img:nth-child(n + 5) {
-  transform: scaleX(-1);
 }
 
 .list {
@@ -86,14 +87,13 @@ p {
   position: relative;
   display: flex;
   flex-direction: column-reverse;
-  gap: 12px;
 }
 
 .current-active::after {
   content: "";
   position: absolute;
   display: inline-block;
-  /* bottom: -12px;  - алтернатива gap в батьку*/
+  /* bottom: -12px; */
   width: 100%;
   height: 4px;
 
@@ -104,7 +104,7 @@ p {
 
 header {
   position: absolute;
-  padding-top: 32px;
+  padding-top: 40px;
   /* padding-bottom: 92px; */
   /* нижі паддінги не працюють, задала hero-content від самого верху */
   width: 100%;
@@ -113,56 +113,40 @@ header {
 .nav {
   display: flex;
   align-items: center;
-  padding-right: 20px;
+  justify-content: space-between;
+  padding-left: 31px;
+  padding-right: 31px;
 }
 
 .logo {
   width: 68px;
   height: 56px;
-  margin-right: 131px;
 }
 
-.logo svg {
+.logo svg,
+.btn-menu-burger svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--light-color-first);
+}
+
+body.mobile-menu-open {
+  overflow: hidden;
+}
+/* стиль використовується через js */
+
+.mobile-btn-close svg {
   width: 100%;
   height: 100%;
   fill: var(--dark-color);
 }
 
-.logo svg:is(:hover, :focus) {
+.logo:is(:hover, :focus) svg,
+.btn-menu-burger:is(:hover, :focus) svg,
+.mobile-btn-close:is(:hover, :focus) svg {
   fill: var(--accent-color);
 
   transition: fill 250ms ease-in-out;
-}
-
-.nav-menu {
-  display: flex;
-  align-items: center;
-
-  font-weight: 600;
-  font-size: 12px;
-  line-height: calc(16.34 / 12);
-  letter-spacing: 0.1em;
-  color: var(--light-color-first);
-}
-
-.paddings-for-a {
-  /* display: inline-block; */
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-/* для збільшення області попадання при хувері */
-
-.nav-menu-first-item:not(:last-child) {
-  margin-right: 30px;
-}
-
-.nav-menu.first {
-  margin-right: auto;
-}
-/* не задані пікселі, а автомаичний відступ */
-
-.nav-menu-second-item:not(:last-child) {
-  margin-right: 43px;
 }
 
 .paddings-for-a:is(:hover, :focus),
@@ -173,6 +157,77 @@ footer .link:is(:hover, :focus) {
   color: var(--accent-color);
 
   transition: color 250ms ease-in-out;
+}
+
+.btn-menu-burger,
+.mobile-btn-close {
+  max-width: 40px;
+  height: 40px;
+  padding: 0;
+
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.nav-menu {
+  display: none;
+}
+
+.mobile-menu-container {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  height: 100vh;
+  padding-top: 48px;
+  padding-right: 31px;
+  padding-left: 40px;
+  background-color: var(--light-color-first);
+  color: var(--dark-color);
+}
+
+.mobile-menu .mobile-btn-close {
+  align-self: flex-end;
+  margin-bottom: 28px;
+}
+
+.mobile-menu-first {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 64px;
+
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+}
+
+.paddings-for-a:is(:hover, :focus) {
+  color: var(--accent-color);
+
+  transition: color 250ms ease-in-out;
+}
+
+.mobile-menu-second {
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+  margin-bottom: 69px;
+
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.1em;
 }
 
 .btn {
@@ -199,47 +254,68 @@ footer .link:is(:hover, :focus) {
   cursor: pointer;
 }
 
+.mobile-menu-button {
+  min-width: 194px;
+  padding: 12px 37px;
+  border: 1px solid var(--accent-color);
+}
+
 .btn:is(:hover, :focus) {
   background-color: var(--accent-color-hover);
   box-shadow: rgba(255, 255, 255, 0.2) 0px 6px 8px 0px;
   transition: background-color 250ms ease-in-out, box-shadow 250ms ease-in-out;
 }
-/* мʼяка заливка при hover потрібна */
+
+.mobile-aside-menu {
+  position: relative;
+  padding-left: 100px;
+
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+}
+
+.mobile-aside-menu:before {
+  content: "";
+
+  position: absolute;
+  top: 9px;
+  left: 0;
+
+  display: block;
+  width: 60px;
+  height: 1px;
+  background-color: currentColor;
+}
+
+.mobile-aside-media {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
 /* -------------------- HERO ------------------- */
 
 .hero {
   display: flex;
   width: 100%;
-  height: 680px;
-  /* align-items: flex-start; */
+  height: 580px;
 }
+
+.hero-container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* щоб фонова картинка була від самого краю */
 
 .aside-menu {
-  position: relative;
-  min-width: 100px;
-}
-
-.aside-media {
-  position: absolute;
-  bottom: 40px;
-  left: 27px;
-  transform-origin: top left;
-  transform: rotate(-90deg);
-  /* можна робити через flex, тоді теж потрібна міняти місце повороту + translate */
-
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--dark-color);
+  display: none;
 }
 
 .hero-overlay {
   max-width: 1070px;
-  max-height: 680px;
+  /* max-height: 680px; */
   margin-left: auto;
   margin-right: auto;
   background-color: var(--medium-color);
@@ -248,18 +324,59 @@ footer .link:is(:hover, :focus) {
       rgba(25, 28, 38, 0.2),
       rgba(25, 2, 38, 0.2)
     ),
-    url(/img/slider\ img\ 3.jpg);
+    url(/img/hero-bg-small_1x.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
 
+/* -------------------- MEDIA FOR HERO-BACKGROUND ------------------- */
+
+@media (min-resolution: 2dppx),
+  (min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+  .hero-overlay {
+    background-image: url(/img/hero-bg-small_2x.webp);
+  }
+}
+
+@media (min-width: 480px) {
+  .hero-overlay {
+    background-image: url(/img/hero-bg-medium_1x.webp);
+  }
+
+  @media (min-resolution: 2dppx),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+    .hero-overlay {
+      background-image: url(/img/hero-bg-medium_2x.webp);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-overlay {
+    background-image: url(/img/hero-bg-big_1x.webp);
+  }
+
+  @media (min-resolution: 2dppx),
+    (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi) {
+    .hero-overlay {
+      background-image: url(/img/hero-bg-big_2x.webp);
+    }
+  }
+}
+
+/* -------------------- MEDIA FOR HERO-BACKGROUND-END ------------------- */
+
 .hero-content {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-top: 272px;
-  padding-left: 100px;
+  padding-top: 208px;
+  padding-bottom: 209px;
+  padding-left: 31px;
 }
 
 .hero h1 {
@@ -267,7 +384,7 @@ footer .link:is(:hover, :focus) {
 
   font-style: var(--second-family);
   font-weight: 700;
-  font-size: 72px;
+  font-size: 48px;
   line-height: 1.18;
   letter-spacing: 0.05em;
   color: var(--light-color-first);
@@ -276,6 +393,7 @@ footer .link:is(:hover, :focus) {
 /* -------------------- SUBTITLE ------------------- */
 .subtitle {
   display: flex;
+  z-index: 0;
   align-items: center;
   padding-bottom: 20px;
   gap: 20px;
@@ -283,6 +401,10 @@ footer .link:is(:hover, :focus) {
 
   font-weight: 600;
   font-size: 11px;
+}
+
+.hide-subtitle-with-z-ind {
+  z-index: -1;
 }
 
 .aside-media:before,
@@ -302,9 +424,6 @@ footer .list:before {
   opacity: 0.6;
 }
 
-.hero h3,
-.about h4,
-.services-and-prices p,
 .advantages h4,
 .our-barbers h4,
 .contacts .city-street,
@@ -315,6 +434,8 @@ footer .list:before {
 
 .hero h3 {
   padding-bottom: 208px;
+  font-size: 16px;
+  line-height: 1.66;
   font-weight: 400px;
 }
 
@@ -324,11 +445,28 @@ footer .list:before {
 .services-and-prices,
 .advantages,
 .our-barbers,
-.photos,
-.online-contacts,
-.online-booking-and-contacts {
-  padding-top: 120px;
-  padding-bottom: 120px;
+.photos {
+  padding-top: 84px;
+  padding-bottom: 84px;
+}
+
+.about h2 {
+  max-width: 306px;
+}
+
+.about h3 {
+  font-family: var(--second-family);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: 0.05em;
+}
+
+.about h4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.66;
+  letter-spacing: 0.02em;
 }
 
 .div-flex {
@@ -336,13 +474,7 @@ footer .list:before {
 }
 
 .about-photo {
-  display: flex;
-  gap: 30px;
-}
-
-.about-content {
-  width: 470px;
-  padding-left: 30px;
+  display: none;
 }
 
 .about h2,
@@ -356,8 +488,6 @@ footer .list:before {
   color: var(--dark-color);
 }
 
-.about h3,
-.services-and-prices h2,
 .advantages h3,
 .our-barbers h2,
 .online-booking h2,
@@ -376,13 +506,12 @@ footer .list:before {
 }
 
 .about h3,
-.about h4,
-.advantages .h-no-reverse {
+.about h4 {
   margin-bottom: 20px;
 }
 
 .about p {
-  margin-bottom: 42px;
+  margin-bottom: 40px;
 
   font-size: 14px;
   line-height: 1.86;
@@ -396,7 +525,7 @@ footer .list:before {
 
 .services-and-prices-overlay {
   max-width: 1600px;
-  max-height: 692px;
+  /* max-height: 692px; */
   margin-left: auto;
   margin-right: auto;
   background-color: #111319;
@@ -404,6 +533,14 @@ footer .list:before {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.services-and-prices h2 {
+  font-family: var(--second-family);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: 0.05em;
 }
 
 .services-and-prices h2,
@@ -414,27 +551,23 @@ footer .list:before {
   color: var(--light-color-first);
 }
 
+.services-and-prices p {
+  font-size: 14px;
+  /* line-height: 1.66; */
+}
+
 .services-and-prices .h-reverse,
-.our-barbers h2,
-.photos h3 {
+.our-barbers h2 {
   margin-bottom: 44px;
 }
 
 .services-and-prices-pricelist {
   display: flex;
+  flex-direction: column;
   margin-bottom: 44px;
-  gap: 30px;
-}
-
-.services-and-prices .list {
-  display: block;
-  min-width: calc((100% - 30px) / 2);
-  padding: 30px 20px 10px 20px;
+  padding: 30px 30px 10px 30px;
+  /* враховуючи марджін нижнього рядка 10 */
   background: linear-gradient(180deg, #171a24 0%, rgba(23, 26, 36, 0.2) 100%);
-}
-
-.services-and-prices .list.second-list {
-  background: linear-gradient(180deg, #090b13 0%, rgba(9, 11, 19, 0.2) 100%);
 }
 
 .services-and-prices .line {
@@ -469,31 +602,31 @@ footer .list:before {
 
 /* -------------------- ADVANTAGES ------------------- */
 
+.advantages .div-flex {
+  flex-direction: column-reverse;
+  gap: 44px;
+}
+
 .advantages .list {
   display: flex;
   flex-wrap: wrap;
-  /* width: 370px; */
-  padding-left: 85px;
+  align-content: center;
+  justify-content: center;
 
-  padding-right: 130px;
+  gap: 30px;
 }
 
 .advantages li {
   display: flex;
   flex-direction: column;
-  padding: 20px 24px;
-  width: 170px;
-  height: 132px;
+  align-content: center;
+  justify-content: center;
+  padding-left: 34px;
+  padding-right: 34px;
+  width: 193px;
+  height: 133px;
   gap: 6px;
   background: var(--light-color-second);
-}
-
-.advantages li:nth-child(odd) {
-  margin-right: 30px;
-}
-
-.advantages li:nth-child(even) {
-  margin-top: 30px;
 }
 
 .advantages p {
@@ -511,6 +644,7 @@ footer .list:before {
 
 .advantages .for-plus-in-after {
   position: relative;
+  z-index: 100;
   /* display: flex;
   justify-content: center;  - треба було якби не position*/
 }
@@ -526,13 +660,21 @@ footer .list:before {
   color: var(--accent-color);
 }
 
+.advantages .h-reverse {
+  max-width: 418px;
+}
+
 .advantages h3 {
-  width: 430px;
+  max-width: 430px;
 }
 
 .advantages h4 {
-  width: 500px;
+  max-width: 418px;
   font-weight: 400;
+}
+
+.advantages .h-no-reverse {
+  margin-bottom: 20px;
 }
 
 /* -------------------- OUR-BARBERS ------------------- */
@@ -541,20 +683,24 @@ footer .list:before {
   background-color: var(--light-color-second);
 }
 
+/* .our-barbers .container {
+  max-width: 418px;
+} */
+
 .our-barbers p {
   color: var(--accent-color);
 }
 
 .our-barbers .cards {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 64px;
 }
 
 .our-barbers .card {
-  width: calc((100% - 60px) / 3);
-  /* flex-shrink: 1; */
+  width: 100%;
 }
-/* для того, щоб не ламалася сітка в разі, якщо одна з карток не завантажилася */
 
 .our-barbers .card-thumb {
   position: relative;
@@ -565,13 +711,16 @@ footer .list:before {
 
 .our-barbers img {
   max-width: 100%;
+  height: 346px;
+  object-fit: cover;
 }
 
 .our-barbers .thumb-text {
   position: absolute;
   top: 0;
-  display: inline-block;
+  display: block;
 
+  max-width: 100%;
   height: 100%;
   padding: 45px;
   overflow-y: auto;
@@ -638,24 +787,22 @@ footer .list:before {
 
 /* -------------------- PHOTO-GALLERY ------------------- */
 
+.photos .subtitle {
+  margin-bottom: 71px;
+}
+
 .photos-gallery {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 20px;
-  column-gap: 30px;
-}
-/* якщо один рядок то можна просто justify-content: space between */
-
-.photos-gallery img {
-  width: calc((100% - 90px) / 4);
+  gap: 30px;
 }
 
-.photos-gallery img:nth-child(n + 5) {
+.photos-gallery li {
+  width: 100%;
+}
+
+.photos-gallery li:nth-child(n + 5) {
   transform: scaleX(-1);
-}
-
-.photos .subtitle {
-  padding-bottom: 0;
 }
 
 /* -------------------- PREFOOTER-SECTION ------------------- */
@@ -663,24 +810,30 @@ footer .list:before {
 .prefooter-section {
   max-width: 1600;
   margin: 0 auto;
-  padding-top: 130px;
-  padding-bottom: 120px;
+  padding-top: 84px;
+  padding-bottom: 84px;
   background-color: var(--contact-section-color);
   background-image: url(/img/contacts-bg.png);
   background-repeat: no-repeat;
-  background-position: right;
-  background-size: calc(50% - 15px) 100%;
+  background-position-y: bottom;
+  background-size: 100% 46%;
   font-size: 18px;
   line-height: 1.66;
 }
 /* фон не задати на окрему секцію, оскільки контейнер вже задає відступи */
 
-.online-booking {
-  width: calc(50% + 15px);
+.prefooter-section .div-flex {
+  flex-direction: column;
 }
 
-.online-booking h2,
-.contacts h2 {
+.online-booking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.online-booking h2 {
   font-family: var(--second-family);
   padding-bottom: 44px;
 }
@@ -689,14 +842,15 @@ footer .list:before {
   display: flex;
   flex-direction: column;
   row-gap: 44px;
+  width: 100%;
 
   text-transform: uppercase;
 }
 
 .online-booking .booking-row {
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-direction: column;
+  gap: 44px;
 }
 
 .booking-form-field {
@@ -718,7 +872,7 @@ footer .list:before {
   position: relative;
   margin: 0;
   padding: 0;
-  min-width: 270px;
+  width: 100%;
   height: 24px;
 
   background-color: inherit;
@@ -763,7 +917,7 @@ footer .list:before {
   position: relative;
   margin: 0;
   padding: 0;
-  min-width: 570px;
+  width: 100%;
   height: 76px;
   resize: none;
 
@@ -805,19 +959,27 @@ footer .list:before {
 }
 
 .online-booking .btn {
-  align-self: flex-start;
+  align-self: center;
   width: 160px;
+  margin-bottom: 84px;
   color: var(--light-color-first);
 }
 
-.contacts {
-  padding-left: 105px;
+.contacts h2 {
+  padding-top: 84px;
+  align-self: center;
+  font-family: var(--second-family);
+  padding-bottom: 40px;
+}
+
+.contacts address {
+  padding-bottom: 44px;
+  width: 322px;
 }
 
 .contacts .list {
   display: flex;
   flex-direction: column;
-  width: 270px;
   gap: 20px;
 }
 
@@ -844,10 +1006,6 @@ footer .list:before {
   width: 24px;
   height: 24px;
   fill: currentColor;
-}
-
-.contacts address {
-  padding-bottom: 70px;
 }
 
 /* -------------------- FOOTER ------------------- */
@@ -922,8 +1080,8 @@ body.modal-open {
 }
 
 .modal-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   fill: var(--medium-color-second);
   cursor: pointer;
 
@@ -1106,4 +1264,470 @@ body.modal-open {
 
 .form-field-radio input:checked::before {
   border: 2px solid var(--accent-color);
+}
+
+/* -------------------- MEDIA ------------------- */
+
+@media screen and (max-width: 340px) {
+  .hero-content {
+    padding-left: 15px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero h3 {
+    font-size: 14x;
+  }
+}
+
+@media screen and (min-width: 446px) {
+  .advantages .list {
+    gap: 0;
+  }
+
+  .advantages li:nth-child(odd) {
+    margin-right: 30px;
+  }
+
+  .advantages li:nth-child(even) {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .container {
+    max-width: 448px;
+    /* шиирина контенту + падінги */
+  }
+
+  .hero-container {
+    max-width: 100%;
+  }
+
+  .our-barbers .card {
+    width: 418px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 720px;
+    /* шиирина контенту + падінги */
+  }
+
+  header {
+    padding-top: 32px;
+  }
+
+  .nav {
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 0;
+  }
+
+  .logo {
+    z-index: 10;
+    margin-right: 58px;
+  }
+  /* для того, щоб спрацьовував hover доданий індекс. адже лого під боковим меню */
+
+  .logo svg {
+    fill: var(--dark-color);
+  }
+
+  .btn-menu-burger,
+  .mobile-btn-close {
+    display: none;
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: calc(16.34 / 12);
+    letter-spacing: 0.1em;
+    color: var(--light-color-first);
+  }
+
+  .paddings-for-a {
+    /* display: inline-block; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .nav-menu-first-item:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  .nav-menu.first {
+    margin-right: auto;
+  }
+  /* не задані пікселі, а автомаичний відступ */
+
+  .nav-menu.second {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0;
+    transform: translateY(30%);
+  }
+  /* рівняла на око */
+
+  /* .nav-menu-second-item {
+    margin-bottom: 20px;
+  } */
+
+  .hero {
+    height: 680px;
+  }
+
+  .hero-container {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .hero-content {
+    padding-top: 272px;
+    padding-bottom: 237px;
+    padding-left: 100px;
+  }
+
+  .hero h1 {
+    font-size: 72px;
+  }
+
+  .hero h3 {
+    font-size: 18px;
+  }
+
+  .aside-menu {
+    display: block;
+    position: relative;
+    min-width: 100px;
+    background-color: transparent;
+  }
+
+  .aside-media {
+    position: absolute;
+    bottom: 40px;
+    left: 27px;
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    /* можна робити через flex, тоді теж потрібна міняти місце повороту + translate */
+
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--dark-color);
+  }
+
+  .about,
+  .services-and-prices,
+  .advantages,
+  .our-barbers,
+  .photos {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .about h4 {
+    font-size: 18px;
+  }
+
+  .about p {
+    margin-bottom: auto;
+  }
+
+  .about .div-flex {
+    gap: 30px;
+  }
+
+  .about-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .about-photo,
+  .about-content {
+    width: calc((100% - 30px) / 2);
+  }
+
+  .about-photo li {
+    max-width: 100%;
+    width: 330px;
+    height: 235px;
+  }
+
+  .about-photo img {
+    object-fit: cover;
+  }
+
+  .about-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-content .btn {
+    display: block;
+    align-self: flex-start;
+  }
+
+  .services-and-prices h2 {
+    font-size: 42px;
+  }
+
+  .services-and-prices p {
+    font-size: 18px;
+    line-height: 1.66;
+  }
+
+  .services-and-prices-pricelist {
+    padding: 32px 40px 12px 40px;
+    /* враховуючи марджін нижнього рядка 10 */
+  }
+
+  .advantages .list {
+    align-self: flex-end;
+    width: 450px;
+  }
+
+  .advantages li {
+    width: 210px;
+  }
+
+  .advantages .h-reverse,
+  .advantages h4 {
+    max-width: 500px;
+  }
+
+  .our-barbers .container {
+    max-width: 480px;
+  }
+
+  .our-barbers .card {
+    width: 450px;
+  }
+
+  .photos .subtitle {
+    margin-bottom: 44px;
+  }
+
+  .photos-gallery li {
+    width: calc((100% - 30px) / 2);
+  }
+
+  .prefooter-section {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-size: 100% 44%;
+  }
+
+  .online-booking {
+    align-items: flex-start;
+  }
+
+  .online-booking .booking-row {
+    flex-direction: row;
+  }
+
+  .booking-form-field {
+    width: 100%;
+  }
+
+  .online-booking .btn {
+    align-self: start;
+    margin-bottom: 100px;
+  }
+
+  .contacts h2 {
+    padding-top: 100px;
+    align-self: start;
+  }
+
+  .contacts address {
+    padding-bottom: 0;
+    width: 330px;
+  }
+
+  .contacts .div-for-contacts {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container,
+  .our-barbers .container {
+    max-width: 1170px;
+    /* шиирина контенту + падінги */
+  }
+
+  header {
+    padding-top: 29px;
+  }
+
+  .nav {
+    justify-content: flex-start;
+    padding-left: 0;
+    padding-right: 17px;
+  }
+
+  .logo {
+    padding-left: 0;
+    margin-right: 132px;
+  }
+
+  .nav-menu-first-item:not(:last-child) {
+    margin-right: 30px;
+  }
+
+  .nav-menu.second {
+    flex-direction: row;
+    justify-content: center;
+    transform: translateY(0);
+  }
+
+  .nav-menu-second-item {
+    margin-bottom: 0;
+  }
+
+  .hero-content {
+    padding-bottom: 208px;
+  }
+
+  .about,
+  .services-and-prices,
+  .advantages,
+  .our-barbers,
+  .photos,
+  .online-contacts,
+  .online-booking-and-contacts {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .about h3 {
+    font-size: 42px;
+  }
+
+  .about-photo {
+    flex-direction: row;
+  }
+
+  .about-photo li {
+    max-width: 100%;
+    width: 270px;
+    height: 445px;
+  }
+
+  .about-photo img {
+    width: 270px;
+    height: 445px;
+    object-fit: fill;
+  }
+
+  .services-and-prices-pricelist {
+    flex-direction: row;
+    gap: 30px;
+    padding: 0;
+    background: transparent;
+  }
+
+  .services-and-prices .list {
+    display: block;
+    width: calc((100% - 30px) / 2);
+    padding: 30px 20px 10px 20px;
+    background: linear-gradient(180deg, #171a24 0%, rgba(23, 26, 36, 0.2) 100%);
+  }
+
+  .services-and-prices .list.second-list {
+    background: linear-gradient(180deg, #090b13 0%, rgba(9, 11, 19, 0.2) 100%);
+  }
+
+  .advantages .container {
+    width: 1030px;
+  }
+  /* тре враховуваи padding по 15  */
+
+  .advantages .div-flex {
+    flex-direction: row;
+    gap: 130px;
+  }
+
+  .advantages .list {
+    width: 370px;
+  }
+
+  .advantages li {
+    width: 170px;
+  }
+
+  .our-barbers .cards {
+    flex-wrap: nowrap;
+    gap: 30px;
+  }
+
+  .our-barbers .card {
+    width: calc((100% - 60px) / 3);
+  }
+
+  .photos-gallery {
+    row-gap: 20px;
+    column-gap: 30px;
+  }
+  /* якщо один рядок то можна просто justify-content: space between */
+
+  .photos-gallery li {
+    width: calc((100% - 90px) / 4);
+  }
+
+  .prefooter-section {
+    padding-top: 130px;
+    padding-bottom: 110px;
+    background-position: right;
+    background-size: calc(50% - 15px) 100%;
+  }
+
+  .prefooter-section .div-flex {
+    flex-direction: row;
+  }
+
+  .online-booking {
+    width: calc(50% + 15px);
+    padding-right: 25px;
+  }
+
+  .online-booking .btn {
+    margin-bottom: 0;
+  }
+
+  .contacts.div-flex {
+    flex-direction: column;
+  }
+
+  .contacts {
+    padding-left: 105px;
+  }
+
+  .contacts h2 {
+    padding-top: 0;
+  }
+
+  .contacts .div-for-contacts {
+    flex-direction: column;
+  }
+
+  .contacts address {
+    padding-bottom: 70px;
+    width: 270px;
+  }
 }
