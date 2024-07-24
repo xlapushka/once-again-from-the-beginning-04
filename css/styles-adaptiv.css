@@ -1593,6 +1593,7 @@ body.modal-open {
   .nav-menu.second {
     flex-direction: row;
     justify-content: center;
+    gap: 43px;
     transform: translateY(0);
   }
 
